@@ -24,13 +24,13 @@ set(gcf, 'Color', 'w');
 
 
 subplot(2, 1 ,1);
-plot( timeArray,  voltage ); hold on;
+plot( timeArray,  voltage ); hold on; box off
 scatter( timeArray(spikeIndex),  voltage(spikeIndex) ); 
 xlabel('seconds');
 ylabel('membrane voltage (mV)');
 
 subplot(2, 1, 2)
-plot( timeArray(1:end-1), diffVoltage ); hold on;
+plot( timeArray(1:end-1), diffVoltage ); hold on; box off
 scatter( timeArray(spikeIndex) , diffVoltage(spikeIndex) );
 xlabel('seconds');
 ylabel('derivative of membrane voltage (mV)');
