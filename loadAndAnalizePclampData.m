@@ -24,8 +24,13 @@ filename = [ folderDirectory cellFolderName '\' exptDate '_' trialNum '.abf' ];
 
 %% Import data into matlab from .abf format
 
-% import data
-[abfData, sampInterval_us, header] = abf2load( filename );
+% import data, different extra variables specify the formate of the data
+% and which channels:
+%[abfData, sampInterval_us, header] = abf2load( filename );
+[abfData, sampInterval_us, header] = abf2load( filename ,'channels', 'a' );% all channels
+%[abfData, sampInterval_us, header] = abf2load( filename , 'channels','a','start',0,'stop', 'e');
+
+
 
 % channel number for voltage and current for current clamp recordings
 VOLTAGE_CHANNEL = 1;
@@ -38,8 +43,13 @@ if( header.nOperationMode == 3) % Gap free recording mode
 data.voltage = abfData(: , VOLTAGE_CHANNEL);
 data.current = abfData(: , CURRENT_CHANNEL);
 data.timeArray = (( 1: length ( data.voltage(:,1) ) ) / sampRate)';
+elseif( header.nOperationMode == 2)    % event-driven fixed-length mode
+% Reduce Vm and I to 2D matrix
+data.voltage = squeeze ( abfData(: , VOLTAGE_CHANNEL , :) );
+data.current = squeeze ( abfData(: , CURRENT_CHANNEL, :) );
+data.timeArray = (( 1: length ( data.voltage(:,1) ) ) / sampRate)';
     
-elseif( header.nOperationMode == 5) %event-driven fixed-length mode
+elseif( header.nOperationMode == 5) % waveform fixed-length mode
 % Reduce Vm and I to 2D matrix
 data.voltage = squeeze ( abfData(: , VOLTAGE_CHANNEL , :) );
 data.current = squeeze ( abfData(: , CURRENT_CHANNEL, :) );
