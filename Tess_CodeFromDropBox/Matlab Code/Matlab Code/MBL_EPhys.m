@@ -19,12 +19,13 @@ switch type
     
     case 'loom'
         
-    visStimCh = find(strcmp(h{1,1}.recChNames, 'iPad_diode'));
+    visStimCh = find(strcmp(h{1,1}.recChNames, 'ptDiode')); %'iPad_diode'
     MBL_LoomEPhys (d_All, si{1}, h, visStimCh)
     
     case 'csChr'
-    
-    otherwise
+        
+        pulseGenCh = find(strcmp(h{1,1}.recChNames, 'csChr'));
+        My_csChrEPhys(d_All, si{1}, pulseGenCh)
         
 end
     

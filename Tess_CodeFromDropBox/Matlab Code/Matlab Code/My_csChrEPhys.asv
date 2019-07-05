@@ -3,14 +3,14 @@ function My_csChrEPhys(d, si, pulseGenCh)
 
 sf = 1000/si; %samples per ms
 tStart = 1.5; % in sec
-tEnd = 6.5; % in sec
+tEnd = 4.5; % in sec
 
 MS_TO_S = 1000;
 frStart = tStart * sf *  MS_TO_S; %in frames
 frEnd =  tEnd * sf *  MS_TO_S;
 
 if sum(d(:,pulseGenCh) > 1) ~= 0
-    MBL_csChrEPhys(d, sf, pulseGenCh, frStart, frEnd)
+    MBL_csChrEPhys(d, sf, pulseGenCh, frStart, dataEnd)
 end
 
 

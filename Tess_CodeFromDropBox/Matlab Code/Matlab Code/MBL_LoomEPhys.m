@@ -12,12 +12,9 @@ baseline = 5000;
 startStimSize = 10;
 endStimSize = 180;
 
-
-
-eventThresh = 0.04;
+eventThresh = 0.34;
 ILI_Thresh = sr*ILI;
-diEventThresh = 1000;
-
+diEventThresh = 1000; 
 
 iEvent = find (d(:,visStimCh) < eventThresh);
 diEvent = diff(iEvent);
