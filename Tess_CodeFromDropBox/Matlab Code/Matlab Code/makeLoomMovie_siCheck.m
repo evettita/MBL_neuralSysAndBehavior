@@ -77,3 +77,9 @@ end
 
 writeVideo(v, F)
 close(v)
+
+end
+
+function [J] = runTest()
+    fprint('hello');
+end
