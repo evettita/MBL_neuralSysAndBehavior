@@ -6,7 +6,7 @@ LoverV = [10 20 40 80];
 ILI = 10; % approx interloom interval in s
 
 dataStart = 25000;
-dataEnd = 30000;
+dataEnd = 50000;
 baseline = 5000;
 
 startStimSize = 10;

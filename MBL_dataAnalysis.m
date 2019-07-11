@@ -6,7 +6,7 @@ datadir = 'C:\Users\Administrator\NSandB_DrosophilaEphy_Data\';
 addpath(genpath(datadir));
 
 % construct file name from trial number and date to match pClamp formate
-dateFolderName = '20190703_csChrTrials';
+dateFolderName = '20190710_loomTrials';
 
 cd( [datadir '/' dateFolderName ] );
 % check if processed data does not already exist
@@ -18,9 +18,9 @@ end
 
 %% Analize looms from matlab data in the loom folder
 
-AnalysisMode = 'csChr'; % loom vs csChr
+AnalysisMode = 'loom'; % loom vs csChr
 
-PHOTODIODE_THRESHOLD = 0.34;% Volts
+PHOTODIODE_THRESHOLD = 0.32;% Volts
 MBL_EPhys(   [datadir '\' dateFolderName ] , AnalysisMode );
 
 
