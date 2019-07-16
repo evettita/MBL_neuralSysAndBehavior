@@ -11,10 +11,17 @@ function [ spikeRasterOut, spikeIndexOut, spikeTimesOut ] = detectSpikeTimes( vo
 %    Yvette Fisher, MBL, 7/2018
 
 %%  Spike detection testing scripts:
+
+
 % FIND PEAKS in diff of Voltage 
 WIDTHS_REQUIRED = 10;
 
 diffVoltage = diff( voltage );
+
+lowPassCutOff = 10000;
+sampleRate = 33333;
+%low pass filter the diff trace
+diffVoltage = lowPassFilter( diffVoltage,  lowPassCutOff , sampleRate );
 
 [~ , spikeIndex] = findpeaks( diffVoltage, 'MinPeakHeight', peakHeightThreshold, 'MinPeakWidth',WIDTHS_REQUIRED);
 
